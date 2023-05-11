@@ -1,0 +1,76 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ececec;
+}
+input[type='checkbox']{
+    width: 200px;
+    height: 200px;
+    -webkit-appearance: none;
+    box-shadow: -10px -10px 15px rgba(255, 255, 255, .5),
+                10px 10px 15px rgba(70, 70, 70, .22);
+    border-radius: 50%;
+    border: 8px solid #ececec;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    transition: all 1s ease-out;
+}
+#main{
+    width: 70px;
+    height: 70px;
+    display: flex; /* 弹性盒 */
+    flex-wrap: wrap; /* 主轴上面排列的这个空间不够的话，就会换行 */
+    position: relative;
+    pointer-events: none;
+}
+/* 电源指示灯外圈 */
+#cir{
+    width: 54px;
+    height: 54px;
+    background-color: transparent;
+    clip-path: polygon(50% 50%, 80% 0%,
+    100% 0%, 100% 100%, 0% 100%,
+    0% 0%, 20% 0%);
+    border-radius: 50%;
+    border: 8px solid #7a7a7a;
+    position: absolute;
+    transition: all 1s ease-out;
+}
+#hh{
+    width: 8px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #7a7a7a;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -10px;
+    transition: all 1s ease-out;
+}
+input[type='checkbox']:checked{
+    box-shadow: -10px -10px 15px rgba(255, 255, 255, .5),
+                10px 10px 15px rgba(70, 70, 70, .22),
+                inset -15px -15px 15px rgba(255, 255, 255, .5),
+                inset 15px 15px 15px rgba(70, 70, 70, .22);
+    transition: all 1s ease-out;
+}
+input[type='checkbox']:checked ~ #main #cir{
+    clip-path: polygon(50% 50%, 50% 0%,
+    100% 0%, 100% 100%, 0% 100%,
+    0% 0%, 50% 0%);
+    border: 8px solid #15e38a;
+    transition: all 1s ease-out;
+}
+input[type='checkbox']:checked ~ #main #hh{
+    height: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50%;
+    background-color: #15e38a;
+    transition: all 1s ease-out;
+}
