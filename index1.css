@@ -1,0 +1,74 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(199, 169, 169);
+    gap: 60px;
+}
+.div{
+    width: 160px;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 15px 15px 30px -5px rgba(23, 21, 21, 0.4),
+                -15px -15px 30px rgba(247, 232, 232, 0.75),
+                inset 5px 5px 10px rgba(248, 223, 223),
+                inset -5px -5px 5px rgba(23, 21, 21, 0.4);
+    transition: all .5s ease-out;
+}
+.btndiv{
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+}
+#btn{
+    background: transparent;
+    border: 1px solid purple;
+    color: purple;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: all 1s ease-out;
+}
+#btn::before{
+    content: '';
+    display: block;
+    width: 0%;
+    height: 100%;
+    background: purple;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 1s ease-out;
+    z-index: -1;
+    left: -30px;
+}
+.btn::before{
+    transform: skewX(45deg);
+}
+.btn1::before{
+    transform: skewX(135deg);
+}
+.btn2::before{
+    transform: scaleX(45deg);
+}
+#btn:hover::before{
+    width: 150%;
+}
+#btn:hover{
+    color: white;
+    cursor: pointer;
+    transition: all 1s ease-out;
+}
+.div:hover{
+    cursor: pointer;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2),
+                0 0 0 0 rgba(255, 255, 255, 0.5),
+                inset 5px 5px 10px rgba(0, 0, 0, 0.2),
+                inset -5px -5px 10px rgba(172, 147, 147, 0.8);
+    transition: all .5s ease-out;
+}
