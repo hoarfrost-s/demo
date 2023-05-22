@@ -1,76 +1,229 @@
-body{
+* {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    box-sizing: border-box;
+}
+
+body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ececec;
+    min-height: 100vh;
+    overflow: hidden;
+    background: #2f363e;
 }
-input[type='checkbox']{
-    width: 200px;
-    height: 200px;
-    -webkit-appearance: none;
-    box-shadow: -10px -10px 15px rgba(255, 255, 255, .5),
-                10px 10px 15px rgba(70, 70, 70, .22);
-    border-radius: 50%;
-    border: 8px solid #ececec;
-    outline: none;
-    cursor: pointer;
-    position: absolute;
-    transition: all 1s ease-out;
-}
-#main{
-    width: 70px;
-    height: 70px;
-    display: flex; /* 弹性盒 */
-    flex-wrap: wrap; /* 主轴上面排列的这个空间不够的话，就会换行 */
+
+/* 外圈 */
+.clock {
     position: relative;
-    pointer-events: none;
-}
-/* 电源指示灯外圈 */
-#cir{
-    width: 54px;
-    height: 54px;
-    background-color: transparent;
-    clip-path: polygon(50% 50%, 80% 0%,
-    100% 0%, 100% 100%, 0% 100%,
-    0% 0%, 20% 0%);
+    width: 280px;
+    height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scale: 2;
+    box-shadow: inset 5px 5px 25px rgba(0, 0, 0, .25);
     border-radius: 50%;
-    border: 8px solid #7a7a7a;
-    position: absolute;
-    transition: all 1s ease-out;
 }
-#hh{
+
+/* 中心点 */
+.clock::before {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #2f363e;
+    z-index: 10000;
+    border: 1px solid #fff;
+    border-radius: 50%;
+}
+
+#time {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#time .circle {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#time .circle svg {
+    position: relative;
+    transform: rotate(270deg);
+}
+
+#time .circle:nth-child(1) svg {
+    width: 250px;
+    height: 250px;
+}
+
+#time .circle:nth-child(2) svg {
+    width: 210px;
+    height: 210px;
+}
+
+#time .circle:nth-child(3) svg {
+    width: 170px;
+    height: 170px;
+}
+
+/* 内圈 */
+#time .circle svg circle {
+    width: 100%;
+    height: 100%;
+    fill: transparent;
+    stroke-width: 2;
+    /* stroke: var(--clr); */ /* 线条 */
+    transform: translate(5px, 5px);
+    opacity: .25;
+}
+
+#time .circle:nth-child(1) svg circle {
+    stroke-dasharray: 755;
+    stroke-dashoffset: 755;
+}
+
+#time .circle:nth-child(2) svg circle {
+    stroke-dasharray: 630;
+    stroke-dashoffset: 630;
+}
+
+#time .circle:nth-child(3) svg circle {
+    stroke-dasharray: 505;
+    stroke-dashoffset: 505;
+}
+
+.dots {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: 10;
+}
+
+/* 内圈点 */
+.dots::before {
+    content: '';
+    position: absolute;
+    top: 1px;
     width: 8px;
-    height: 40px;
-    border-radius: 5px;
-    background-color: #7a7a7a;
+    height: 8px;
+    background: var(--clr);
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--clr),
+                0 0 40px var(--clr),
+                0 0 60px var(--clr),
+                0 0 80px var(--clr);
+}
+
+.niddles {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: -10px;
-    transition: all 1s ease-out;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 10;
 }
-input[type='checkbox']:checked{
-    box-shadow: -10px -10px 15px rgba(255, 255, 255, .5),
-                10px 10px 15px rgba(70, 70, 70, .22),
-                inset -15px -15px 15px rgba(255, 255, 255, .5),
-                inset 15px 15px 15px rgba(70, 70, 70, .22);
-    transition: all 1s ease-out;
+
+.niddles i {
+    position: absolute;
+    width: 2px;
+    background: var(--clr2);
+    height: 50%;
+    opacity: .75;
+    border-radius: 6px;
+    transform-origin: bottom;
+    transform: scaleY(.5);
 }
-input[type='checkbox']:checked ~ #main #cir{
-    clip-path: polygon(50% 50%, 50% 0%,
-    100% 0%, 100% 100%, 0% 100%,
-    0% 0%, 50% 0%);
-    border: 8px solid #15e38a;
-    transition: all 1s ease-out;
+
+.niddles.niddle2 {
+    width: 160px;
+    height: 160px;
+    z-index: 9;
 }
-input[type='checkbox']:checked ~ #main #hh{
-    height: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 50%;
-    background-color: #15e38a;
-    transition: all 1s ease-out;
+
+.niddles.niddle2 i {
+    width: 2px;
+}
+
+.niddles.niddle3 {
+    width: 100px;
+    height: 100px;
+    z-index: 8;
+}
+
+.niddles.niddle3 i {
+    width: 2px;
+}
+
+#time .hr {
+    position: absolute;
+    inset: 25px;
+    text-align: center;
+    color: #999;
+    font-family: consolas;
+    transform: rotate(calc(30deg * var(--i)));
+}
+
+#time .min {
+    position: absolute;
+    inset: 5px;
+    text-align: center;
+    color: #999;
+    font-family: consolas;
+    transform: rotate(calc(30deg * var(--i)));
+}
+
+#time .sec {
+    position: absolute;
+    inset: -15px;
+    text-align: center;
+    color: #999;
+    font-family: consolas;
+    transform: rotate(calc(30deg * var(--i) / 5));
+}
+
+#time .hr b {
+    font-size: .75em;
+    font-weight: 500;
+    display: inline-block;
+    transform: rotate(calc(-30deg * var(--i)));
+}
+
+#time .min b {
+    font-size: .75em;
+    font-weight: 500;
+    display: inline-block;
+    transform: rotate(calc(-30deg * var(--i)));
+}
+
+#time .sec b {
+    font-size: .75em;
+    font-weight: 500;
+    display: inline-block;
+    transform: rotate(calc(-90deg * var(--j)));
+}
+
+#time .time_b {
+    position: absolute;
+    bottom: 55px;
+}
+
+#time .time_b b {
+    font-size: .75em;
+    font-weight: 500;
+    color: #999;
+    display: inline-block;
+    font-family: consolas;
 }
