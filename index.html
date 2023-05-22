@@ -1,17 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS 实现拟态风格开关按钮</title>
+    <title>CSS SVG Js 工作模拟闹钟</title>
     <link rel="stylesheet" href="./index.css" />
+    <script type="text/javascript" onload="run()" src="./index.js"></script>
 </head>
+
 <body>
-    <input type="checkbox">
-    <div id="main">
-        <div id="cir"></div>
-        <div id="hh"></div>
+    <div class="clock">
+        <div id="time">
+            <div class="circle" style="--clr:#ff2972;">
+                <div class="dots sec_dot"></div>
+                <svg>
+                    <circle cx="120" cy="120" r="120" id="ss"></circle>
+                </svg>
+            </div>
+            <div class="circle" style="--clr:#fee800;">
+                <div class="dots min_dot"></div>
+                <svg>
+                    <circle cx="100" cy="100" r="100" id="mm"></circle>
+                </svg>
+            </div>
+            <div class="circle" style="--clr:#04fc43;">
+                <div class="dots hr_dot"></div>
+                <svg>
+                    <circle cx="80" cy="80" r="80" id="hh"></circle>
+                </svg>
+            </div>
+
+            <div class="niddles" style="--clr2:#ff2972;" id="sec"><i></i></div>
+            <div class="niddles niddle2" style="--clr2:#fee800;" id="min"><i></i></div>
+            <div class="niddles niddle3" style="--clr2:#04fc43;" id="hr"><i></i></div>
+
+            <div>
+                <span class="hr" style="--i:1;"><b>1</b></span>
+                <span class="hr" style="--i:2;"><b>2</b></span>
+                <span class="hr" style="--i:3;"><b>3</b></span>
+                <span class="hr" style="--i:4;"><b>4</b></span>
+                <span class="hr" style="--i:5;"><b>5</b></span>
+                <span class="hr" style="--i:6;"><b>6</b></span>
+                <span class="hr" style="--i:7;"><b>7</b></span>
+                <span class="hr" style="--i:8;"><b>8</b></span>
+                <span class="hr" style="--i:9;"><b>9</b></span>
+                <span class="hr" style="--i:10;"><b>10</b></span>
+                <span class="hr" style="--i:11;"><b>11</b></span>
+                <span class="hr" style="--i:12;"><b>12</b></span>
+            </div>
+            <div>
+                <span class="min" style="--i:0;"><b>0</b></span>
+                <span class="min" style="--i:1;"><b>5</b></span>
+                <span class="min" style="--i:2;"><b>10</b></span>
+                <span class="min" style="--i:3;"><b>15</b></span>
+                <span class="min" style="--i:4;"><b>20</b></span>
+                <span class="min" style="--i:5;"><b>25</b></span>
+                <span class="min" style="--i:6;"><b>30</b></span>
+                <span class="min" style="--i:7;"><b>35</b></span>
+                <span class="min" style="--i:8;"><b>40</b></span>
+                <span class="min" style="--i:9;"><b>45</b></span>
+                <span class="min" style="--i:10;"><b>50</b></span>
+                <span class="min" style="--i:11;"><b>55</b></span>
+            </div>
+            <div>
+                <span class="sec" style="--i:1;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:2;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:3;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:4;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:6;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:7;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:8;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:9;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:11;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:12;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:13;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:14;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:16;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:17;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:18;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:19;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:21;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:22;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:23;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:24;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:26;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:27;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:28;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:29;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:31;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:32;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:33;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:34;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:36;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:37;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:38;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:39;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:41;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:42;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:43;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:44;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:46;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:47;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:48;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:49;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:51;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:52;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:53;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:54;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:56;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:57;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:58;--j:1;"><b>➖</b></span>
+                <span class="sec" style="--i:59;--j:1;"><b>➖</b></span>
+            </div>
+
+            <div class="time_b">
+                <b id="time_co"></b>
+                <b id="time_b"></b>
+            </div>
+
+        </div>
     </div>
 </body>
+
 </html>
