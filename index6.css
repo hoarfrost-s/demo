@@ -1,0 +1,74 @@
+* {
+
+    padding: 0;
+
+    margin: 0;
+
+}
+
+body {
+
+    background: #000000;
+
+    height: 100vh;
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+.drop {
+
+    width: 1.5px;
+
+    height: 20px;
+
+    position: absolute;
+
+    border-radius: 0 0 5px 5px;
+
+    -webkit-border-radius: 0 0 5px 5px;
+
+    -moz-border-radius: 0 0 5px 5px;
+
+    -ms-border-radius: 0 0 5px 5px;
+
+    -o-border-radius: 0 0 5px 5px;
+
+    animation: DropFall 5s linear infinite;
+
+    -webkit-animation: DropFall 5s linear infinite;
+
+}
+
+@keyframes DropFall {
+
+    from {
+
+        transform: translateY(-100%);
+
+        -webkit-transform: translateY(-100%);
+
+        -moz-transform: translateY(-100%);
+
+        -ms-transform: translateY(-100%);
+
+        -o-transform: translateY(-100%);
+
+    } to {
+
+        transform: translateY(100vh);
+
+        -webkit-transform: translateY(100vh);
+
+        -moz-transform: translateY(100vh);
+
+        -ms-transform: translateY(100vh);
+
+        -o-transform: translateY(100vh);
+
+}
+
+}
+
